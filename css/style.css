@@ -1,0 +1,62 @@
+body {
+    background-color: black;
+    color: #FFD700;
+    font-family: "Courier New", monospace;
+    padding: 40px;
+    font-size: 22px;
+}
+
+.terminal {
+    max-width: 800px;
+}
+
+button {
+    background-color: black;
+    color: #FFD700;
+    border: 2px solid #FFD700;
+    padding: 10px 20px;
+    margin: 5px;
+    font-family: inherit;
+    font-size: 18px;
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+button:hover {
+    background-color: #FFD700;
+    color: black;
+}
+
+.command-line {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+input {
+    background-color: black;
+    color: #FFD700;
+    border: none;
+    outline: none;
+    font-family: inherit;
+    font-size: 20px;
+    width: 100%;
+}
+input::placeholder {
+    color: #FFD700;
+}
+
+.cursor::after {
+    content: "|";
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.back-button {
+    margin-top: 20px;
+}

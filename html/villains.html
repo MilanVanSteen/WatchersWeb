@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Villains</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/load.css">
+</head>
+
+<body data-type="villains">
+    <div class="terminal">
+        <p id="output"></p>
+        <div class="characters" id="buttons">
+            <button onclick="goToCharacter('villains', 'eagle-owl')">Eagle-Owl</button>
+            <button onclick="goToCharacter('villains', 'goshawk')">Goshawk</button>
+            <button onclick="goToCharacter('villains', 'buzzard')">Buzzard</button>
+            <button onclick="goToCharacter('villains', 'swooper')">Swooper</button>
+            <button onclick="goToCharacter('villains', 'golden-eagle')">Golden Eagle</button>
+            <button onclick="goToCharacter('villains', 'berserker')">Berserker</button>
+            <button onclick="goToCharacter('villains', 'bulldozer')">Bulldozer</button>
+            <button onclick="goToCharacter('villains', 'lightshow')">Lightshow</button>
+            <button onclick="goToCharacter('villains', 'thundershark')">Thundershark</button>
+            <button onclick="goToCharacter('villains', 'hivemind')">Hivemind</button>
+            <button onclick="goToCharacter('villains', 'lollipop')">Lollipop</button>
+            <button onclick="goToCharacter('villains', 'reticulatus')">Reticulatus</button>
+            <button onclick="goToCharacter('villains', 'harpy')">Harpy</button>
+            <button onclick="goToCharacter('villains', 'the-tiger')">The Tiger</button>
+            <button onclick="goToCharacter('villains', 'leopard')">Leopard</button>
+            <button onclick="goToCharacter('villains', 'leo')">Leo</button>
+            <button onclick="goToCharacter('villains', 'hunter')">Hunter</button>
+        </div>
+
+        <div class="command-line" id="input" style="display:none;">
+            <span>> </span>
+            <input type="text" id="commandInput" placeholder="_" autofocus>
+        </div>
+
+        <button class="show-on-load" onclick="window.location.href='home.html'">Back</button>
+    </div>
+
+    <script type="module" src="/js/characters.js"></script>
+</body>
+</html>

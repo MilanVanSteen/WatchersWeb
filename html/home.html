@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Database</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/load.css">
+</head>
+
+<body>
+    <div class="terminal">
+        <div id="output"></div>
+
+        <div class="characters" id="buttons">
+            <button onclick="goToPage('heroes')">Hero</button>
+            <button onclick="goToPage('villains')">Villain</button>
+            <button onclick="goToPage('neutral')">Neutral</button>
+        </div>
+
+        <div class="command-line" id="input" style="display:none;">
+            <span>> </span>
+            <input type="text" id="commandInput" placeholder="_" autofocus>
+        </div>
+    </div>
+
+    <script type="module" src="/js/home.js"></script>
+</body>
+</html>

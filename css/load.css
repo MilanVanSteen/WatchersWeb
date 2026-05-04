@@ -1,0 +1,52 @@
+.characters {
+    margin: 20px 0;
+}
+
+/* stagger animation base */
+.characters button,
+.show-on-load {
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.characters button.show,
+.show-on-load.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.character-image {
+    margin: 15px 0;
+    max-width: 300px;
+    border: 2px solid #FFD700;
+}
+
+/* container needed for masking */
+.scan-reveal {
+    opacity: 0;
+    position: relative;
+    display: block;
+
+    /* hide initially */
+    clip-path: inset(0 0 100% 0);
+}
+
+/* animate reveal */
+.scan-reveal.show {
+    animation: scanReveal 1.2s steps(20) forwards;
+}
+
+/* the actual reveal */
+@keyframes scanReveal {
+    from {
+        opacity: 0;
+        clip-path: inset(0 0 100% 0);
+    }
+    to {
+        opacity: 1;
+        clip-path: inset(0 0 0 0);
+    }
+}
