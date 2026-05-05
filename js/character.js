@@ -1,7 +1,8 @@
 export class Character {
-    constructor({name, caseNumber, published, updated, lastSeen, description, image, realName, aliases = [], birthPlace, birthDate, gender, height, hairColor, eyeColor, nationality, languages = [], weaknesses = [], crimes = [], threatLevel, searchTerms = []}) 
+    constructor({name, affiliation, caseNumber, published, updated, lastSeen, description, image, realName, aliases = [], birthPlace, birthDate, gender, height, hairColor, eyeColor, nationality, languages = [], weaknesses = [], crimes = [], threatLevel, searchTerms = []}) 
     {
         this.name = name;
+        this.affiliation = affiliation;
         this.caseNumber = caseNumber;
         this.published = published;
         this.updated = updated;
@@ -35,7 +36,7 @@ export class Character {
             this.description,
             " ",
             `__HTML__<img src='${this.image}' class='character-image scan-reveal'>`,
-            "Signalement:",
+            `__HTML__<span class='bold'>Signalement:</span>`,
             `- Real name: ${this.realName}`,
             `- Other aliases: ${this.aliases.join(", ")}`,
             `- Date of birth: ${this.birthDate}`,
