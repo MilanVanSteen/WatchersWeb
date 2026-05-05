@@ -1,6 +1,6 @@
 body {
     background-color: black;
-    color: #FFD700;
+    color: #FFFFFF;
     font-family: "Courier New", monospace;
     padding: 40px;
     font-size: 22px;
@@ -12,8 +12,8 @@ body {
 
 button {
     background-color: black;
-    color: #FFD700;
-    border: 2px solid #FFD700;
+    color: #FFFFFF;
+    border: 2px solid #FFFFFF;
     padding: 10px 20px;
     margin: 5px;
     font-family: inherit;
@@ -23,7 +23,7 @@ button {
     transition: 0.2s;
 }
 button:hover {
-    background-color: #FFD700;
+    background-color: #ffffff;
     color: black;
 }
 
@@ -35,7 +35,7 @@ button:hover {
 
 input {
     background-color: black;
-    color: #FFD700;
+    color: #FFFFFF;
     border: none;
     outline: none;
     font-family: inherit;
@@ -43,7 +43,7 @@ input {
     width: 100%;
 }
 input::placeholder {
-    color: #FFD700;
+    color: #FFFFFF;
 }
 
 .cursor::after {
