@@ -1,5 +1,5 @@
 export class Character {
-    constructor({name, affiliation, caseNumber, published, updated, lastSeen, description, image, realName, aliases = [], birthPlace, birthDate, gender, height, hairColor, eyeColor, nationality, languages = [], weaknesses = [], crimes = [], threatLevel, searchTerms = []}) 
+    constructor({name, affiliation, caseNumber, published, updated, lastSeen, description, image, realName, aliases = [], birthDate, birthPlace, gender, height, hairColor, eyeColor, nationality, languages = [], weaknesses = [], crimes = [], threatLevel, searchTerms = []}) 
     {
         this.name = name;
         this.affiliation = affiliation;
@@ -27,34 +27,49 @@ export class Character {
 
     getLines() {
         return [
-            this.name,
-            `Case number: ${this.caseNumber}`,
-            `Published on: ${this.published}`,
-            `Last update: ${this.updated}`,
-            `Last seen in: ${this.lastSeen}`,
-            " ",
-            this.description,
-            " ",
-            `__HTML__<img src='${this.image}' class='character-image scan-reveal'>`,
-            `__HTML__<span class='bold'>Signalement:</span>`,
-            `- Real name: ${this.realName}`,
-            `- Other aliases: ${this.aliases.join(", ")}`,
-            `- Date of birth: ${this.birthDate}`,
-            `- Place of birth: ${this.birthPlace}`,
-            `- Gender: ${this.gender}`,
-            `- Height: ${this.height}`,
-            `- Hair color: ${this.hairColor}`,
-            `- Eye color: ${this.eyeColor}`,
-            `- Nationality: ${this.nationality}`,
-            `- Speaks: ${this.languages.join(", ")}`,
-            " ",
-            "Specific Weaknesses:",
-            ...this.weaknesses.map(w => `- ${w}`),
-            " ",
-            "Committed Crimes:",
-            ...this.crimes.map(c => `- ${c}`),
-            " ",
-            `Threat level: ${this.threatLevel}`
+            { type: "title", text: this.name },
+
+            { type: "space" },
+            { type: "field", text: `Case number: ${this.caseNumber}` },
+            { type: "space" },
+            { type: "field", text: `Published on: ${this.published}` },
+            { type: "space" },
+            { type: "field", text: `Last update: ${this.updated}` },
+            { type: "space" },
+            { type: "field", text: `Last seen in: ${this.lastSeen}` },
+            { type: "space" },
+            { type: "space" },
+            { type: "space" },
+            { type: "text", text: this.description },
+            { type: "space" },
+            { type: "space" },
+            { type: "space" },
+            { type: "section", text: "Signalement:" },
+            { type: "space" },
+            { type: "field", text: `- Real name: ${this.realName}` },
+            { type: "field", text: `- Other aliases: ${this.aliases.join(", ")}` },
+            { type: "field", text: `- Date of birth: ${this.birthDate}` },
+            { type: "field", text: `- Place of birth: ${this.birthPlace}` },
+            { type: "field", text: `- Gender: ${this.gender}` },
+            { type: "field", text: `- Height: ${this.height}` },
+            { type: "field", text: `- Hair color: ${this.hairColor}` },
+            { type: "field", text: `- Eye color: ${this.eyeColor}` },
+            { type: "field", text: `- Nationality: ${this.nationality}` },
+            { type: "field", text: `- Speaks: ${this.languages.join(", ")}` },
+            { type: "space" },
+            { type: "space" },
+            { type: "space" },
+            { type: "section", text: "Specific Weaknesses:" },
+            ...this.weaknesses.map(w => ({ type: "bullet", text: w })),
+            { type: "space" },
+            { type: "space" },
+            { type: "space" },
+            { type: "section", text: "Committed Crimes:" },
+            ...this.crimes.map(c => ({ type: "bullet", text: c })),
+            { type: "space" },
+            { type: "space" },
+            { type: "space" },
+            { type: "threat", text: this.threatLevel }
         ];
     }
 }

@@ -2,64 +2,95 @@ export function typeLines({
     element,
     lines,
     typingSpeed = 40, // lower = faster
-    lineDelay = 600,
+    lineDelay = 400,
     onComplete = null
 }) {
-    let lineIndex = 0;
-    let charIndex = 0;
+    let index = 0;
 
-    function type() 
-    {
-        if (!element) return;
+    function next() {
+        index++;
 
-        if (lineIndex < lines.length) 
-        {
-            const currentLine = lines[lineIndex];
-
-            if (currentLine.startsWith("__HTML__")) {
-                const html = currentLine.replace("__HTML__", "");
-
-                const wrapper = document.createElement("div");
-                wrapper.innerHTML = html;
-
-                const img = wrapper.querySelector(".scan-reveal");
-
-                element.appendChild(wrapper);
-                element.appendChild(document.createElement("br"));
-
-                if (img) {
-                    img.classList.remove("show");
-
-                    requestAnimationFrame(() => {
-                        requestAnimationFrame(() => {
-                            img.classList.add("show");
-                        });
-                    });
-                }
-
-                lineIndex++;
-                charIndex = 0;
-                setTimeout(type, lineDelay);
-                return;
-            }
-
-            if (charIndex < lines[lineIndex].length) {
-                element.appendChild(document.createTextNode(lines[lineIndex][charIndex]));
-                charIndex++;
-                setTimeout(type, typingSpeed);
-            } 
-            else {
-                element.appendChild(document.createElement("br"));
-                lineIndex++;
-                charIndex = 0;
-                setTimeout(type, lineDelay);
-            }
-
-        } 
-        else {
+        if (index >= lines.length) {
             if (onComplete) onComplete();
+            return;
+        }
+
+        setTimeout(() => render(lines[index]), lineDelay);
+    }
+    
+    function render(line) {
+        const el = document.createElement("div");
+        element.appendChild(el);
+
+        switch (line.type) {
+
+            case "title":
+                el.classList.add("line-title");
+                typeText(el, line.text, next);
+                break;
+
+            case "section":
+                el.classList.add("line-section");
+                typeText(el, line.text, next);
+                break;
+            
+            case "threat": {
+                const el = document.createElement("div");
+                el.classList.add("line-field");
+
+                const level = line.text.toLowerCase();
+
+                let color = "white";
+
+                if (level === "high") color = "red";
+                else if (level === "medium") color = "yellow";
+                else if (level === "low") color = "green";
+
+                el.innerHTML = `<b>Threat level:</b> <span class="threat ${level}">${line.text}</span>`;
+
+                element.appendChild(el);
+                next();
+                break;
+
+                // make it type out, also make page automatically go down with new lines?, and sound obv
+            }
+
+            case "field":
+                el.classList.add("line-field");
+                typeText(el, line.text, next);
+                break;
+
+            case "bullet":
+                el.classList.add("line-bullet");
+                typeText(el, `- ${line.text}`, next);
+                break;
+
+            case "text":
+                el.classList.add("line-text");
+                typeText(el, line.text, next);
+                break;
+
+            case "space":
+                el.style.height = "22px";
+                next();
+                break;
         }
     }
 
-    type();
+    function typeText(el, text, done) {
+        let i = 0;
+
+        function step() {
+            if (i < text.length) {
+                el.innerHTML += text[i++];
+                setTimeout(step, typingSpeed);
+            } else {
+                done();
+            }
+        }
+
+        step();
+    }
+
+    if (lines.length) render(lines[index]);
 }

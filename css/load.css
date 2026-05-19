@@ -18,25 +18,34 @@
     pointer-events: auto;
 }
 
-.character-image {
-    margin: 15px 0;
-    max-width: 300px;
-    border: 2px solid #ffffff;
+.content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
 }
 
-/* container needed for masking */
-.scan-reveal {
-    opacity: 0;
-    position: relative;
-    display: block;
+#output {
+    flex: 1;
+    max-width: 65%;
+}
 
-    /* hide initially */
+#imageContainer {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.character-image {
+    max-width: 60%;
+    width: 100%;
+    margin-right: 10vw;
     clip-path: inset(0 0 100% 0);
 }
 
-/* animate reveal */
-.scan-reveal.show {
-    animation: scanReveal 1.2s steps(20) forwards;
+.character-image.show {
+    animation: scanReveal 20s steps(100) forwards;
 }
 
 /* the actual reveal */
@@ -49,4 +58,43 @@
         opacity: 1;
         clip-path: inset(0 0 0 0);
     }
+}
+
+.line-title {
+    font-size: 44px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.line-section {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+.line-field {
+    margin: 2px 0;
+}
+
+.line-bullet {
+    margin-left: 12px;
+}
+
+.line-text {
+    margin: 6px 0;
+}
+
+.threat.high {
+    color: red;
+    font-weight: bold;
+}
+
+.threat.medium {
+    color: yellow;
+    font-weight: bold;
+}
+
+.threat.low {
+    color: limegreen;
+    font-weight: bold;
 }

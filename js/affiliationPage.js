@@ -28,3 +28,17 @@ window.addEventListener("DOMContentLoaded", () => {
             }, index * 120);
         });
 });
+
+
+// typeLines({
+//         element: output,
+//         lines: [
+//             "Watchlist",
+//             "Select an entry:"
+//         ],
+//         onComplete: () => {
+//             revealButtons();
+//             inputBox.style.display = "flex";
+//             input.focus();
+//         }
+//     });
